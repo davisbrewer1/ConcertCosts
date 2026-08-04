@@ -25,11 +25,11 @@ export default async function AppLayout({
         <div className="absolute bottom-0 left-0 h-80 w-80 rounded-full bg-secondary/10 blur-3xl" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
+      <div className="relative z-10 mx-auto max-w-7xl px-4 py-6 sm:px-6 sm:py-8">
         <header className="card bg-base-100 shadow-md border border-base-300 mb-6">
           <div className="card-body gap-4 p-4 sm:p-6">
-            <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-              <div className="space-y-1">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+              <div className="space-y-1 min-w-0">
                 <h1 className="font-display text-3xl sm:text-4xl font-bold tracking-tight">
                   Concert Cost Tracker
                 </h1>
@@ -39,8 +39,8 @@ export default async function AppLayout({
                 </p>
               </div>
 
-              <div className="flex flex-col sm:flex-row sm:items-center gap-3">
-                <div className="badge badge-outline badge-lg h-auto py-2 px-3 font-normal max-w-full truncate">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3 shrink-0">
+                <div className="badge badge-outline badge-lg h-auto py-2 px-3 font-normal max-w-[16rem] truncate">
                   {user.email}
                 </div>
                 <ThemeSelector />

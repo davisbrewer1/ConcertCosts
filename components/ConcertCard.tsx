@@ -1,3 +1,4 @@
+import { ShareRecapButton } from "@/components/ShareRecapButton";
 import {
   formatCurrency,
   formatDate,
@@ -26,7 +27,12 @@ export function ConcertCard({ concert }: { concert: Concert }) {
               {concert.venue} · {concert.city}, {concert.state}
             </p>
           </div>
-          <div className="badge badge-outline">{formatDate(concert.concert_date)}</div>
+          <div className="flex flex-wrap items-center gap-2">
+            <div className="badge badge-outline">
+              {formatDate(concert.concert_date)}
+            </div>
+            <ShareRecapButton concert={concert} />
+          </div>
         </div>
 
         <div className="stats stats-vertical sm:stats-horizontal shadow-none bg-base-200/50 w-full">
