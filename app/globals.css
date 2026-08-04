@@ -1,0 +1,56 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes: night --default, dark, synthwave, cyberpunk, valentine, winter, cupcake,
+    emerald, forest, luxury;
+}
+
+@theme inline {
+  --font-sans: var(--font-figtree);
+  --font-display: var(--font-syne);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-figtree), system-ui, sans-serif;
+}
+
+.font-display {
+  font-family: var(--font-syne), var(--font-figtree), system-ui, sans-serif;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes soft-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.55s ease-out both;
+}
+
+.animate-fade-up-delay {
+  animation: fade-up 0.7s ease-out 0.12s both;
+}
+
+.hero-glow {
+  animation: soft-pulse 6s ease-in-out infinite;
+}

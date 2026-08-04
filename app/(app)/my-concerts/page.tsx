@@ -1,0 +1,39 @@
+import { ConcertCard } from "@/components/ConcertCard";
+import { EmptyState } from "@/components/EmptyState";
+import { createClient } from "@/lib/supabase/server";
+import type { Concert } from "@/lib/types";
+
+export default async function MyConcertsPage() {
+  const supabase = await createClient();
+  const { data, error } = await supabase
+    .from("concerts")
+    .select("*")
+    .order("concert_date", { ascending: false });
+
+  const concerts = (data ?? []) as Concert[];
+
+  return (
+    <div className="space-y-4 animate-fade-up">
+      <div>
+        <h2 className="font-display text-2xl font-bold">My Concerts</h2>
+        <p className="opacity-70">
+          Every show you have logged, with cost and fun at a glance.
+        </p>
+      </div>
+
+      {error && (
+        <div role="alert" className="alert alert-error">
+          <span>Could not load concerts: {error.message}</span>
+        </div>
+      )}
+
+      {!error && concerts.length === 0 && <EmptyState />}
+
+      <div className="grid gap-4">
+        {concerts.map((concert) => (
+          <ConcertCard key={concert.id} concert={concert} />
+        ))}
+      </div>
+    </div>
+  );
+}
